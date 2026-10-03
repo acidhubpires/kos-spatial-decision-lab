@@ -1,0 +1,24 @@
+{
+  "name": "kos-spatial-decision-benchmark",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "dev": "tsx src/server.ts",
+    "build": "tsc --outDir dist --rootDir . && node -e \"require('node:fs').cpSync('public','dist/public',{recursive:true})\"",
+    "typecheck": "tsc --noEmit",
+    "test": "tsx --test tests/**/*.test.ts",
+    "manifest": "tsx src/manifest.ts",
+    "setup:laya": "node scripts/setup-laya.mjs"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@10.33.2",
+  "devDependencies": {
+    "@types/node": "^26.6.4",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2"
+  }
+}
