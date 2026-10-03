@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>KOS Spatial Decision Lab</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <header><p class="eyebrow">Functional Prototype</p><h1>KOS Spatial Decision Lab</h1><p>One frozen spatial state, one proposition, three decision architectures.</p></header>
+  <main>
+    <section class="toolbar"><label for="fixture">Scenario</label><select id="fixture"><option value="A">A — SUPPORTED</option><option value="B">B — CONTRADICTED</option><option value="C">C — INSUFFICIENT</option></select><button id="runAll">RUN ALL</button><span id="status">Ready</span></section>
+    <section class="state-grid"><div><h2>CanonicalSpatialState</h2><pre id="state"></pre></div><div><h2>Proposition</h2><p id="proposition" class="proposition"></p><p>Expected: <strong id="expected"></strong></p><p class="digest">SHA-256 <code id="digest"></code></p></div></section>
+    <section id="cards" class="cards"></section>
+    <section><h2>Measurement table</h2><div class="table-wrap"><table><thead><tr><th>Architecture</th><th>Status</th><th>Decision</th><th>Correct</th><th>Total ms</th><th>Inference ms</th><th>Governance ms</th><th>Input bytes</th><th>Output bytes</th><th>Tokens</th><th>Provider / model</th></tr></thead><tbody id="measurements"></tbody></table></div></section>
+    <section><h2>Raw result inspection</h2><pre id="raw">Run an architecture to inspect its result.</pre></section>
+  </main>
+  <script type="module" src="/app.js"></script>
+</body>
+</html>
