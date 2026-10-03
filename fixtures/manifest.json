@@ -1,20 +1,9 @@
-[
-  {
-    "fixtureId": "A",
-    "propositionId": "tower-vivo-sp",
-    "expectedLabel": "SUPPORTED",
-    "stateDigest": "f2eb88aaf448af926677d9f5fbb2d75a254698976560396928c38a13dc58d590"
-  },
-  {
-    "fixtureId": "B",
-    "propositionId": "tower-vivo-sp",
-    "expectedLabel": "CONTRADICTED",
-    "stateDigest": "fcea2962b3830decaafbedcb5c7eb3681316d6e3befa4016b4c528140e4938f9"
-  },
-  {
-    "fixtureId": "C",
-    "propositionId": "tower-vivo-sp",
-    "expectedLabel": "INSUFFICIENT",
-    "stateDigest": "d6e1e74123ccf35480fefe7ee3c359e5b3da8989d94df28f2b54e2e671bc2583"
-  }
-]
+{
+  "propositionId": "tower-vivo-sp",
+  "proposition": "The observed feature is a VIVO tower located in SP.",
+  "fixtures": [
+    { "fixtureId": "A", "expectedLabel": "SUPPORTED", "stateDigest": "f2eb88aaf448af926677d9f5fbb2d75a254698976560396928c38a13dc58d590" },
+    { "fixtureId": "B", "expectedLabel": "CONTRADICTED", "stateDigest": "fcea2962b3830decaafbedcb5c7eb3681316d6e3befa4016b4c528140e4938f9" },
+    { "fixtureId": "C", "expectedLabel": "INSUFFICIENT", "stateDigest": "d6e1e74123ccf35480fefe7ee3c359e5b3da8989d94df28f2b54e2e671bc2583" }
+  ]
+}

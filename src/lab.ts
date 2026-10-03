@@ -1,5 +1,6 @@
 import { digestCanonicalState, PROPOSITION, PROPOSITION_ID, serializeCanonicalState, type CanonicalSpatialState, type ExpectedLabel } from "./experiment-contract.js";
 import { FIXTURES } from "./fixtures.js";
+import { pathToFileURL } from "node:url";
 
 export type Architecture = "PURE_MODEL" | "LAYA" | "KOS_GOVERNED";
 export type LabStatus = "COMPLETED" | "NOT_CONFIGURED" | "RUNTIME_ERROR" | "INVALID_OUTPUT";
@@ -148,7 +149,7 @@ export async function pureProvider(state: CanonicalSpatialState): Promise<Provid
       const tags = await fetch(`${endpoint}/api/tags`, { signal: controller.signal });
       const tagText = await tags.text();
       let data: { models?: { name?: string }[] } = {};
-      try { data = JSON.parse(tagText) as { models?: { name?: string }[] }; } catch {}
+      try { data = JSON.parse(tagText) as { models?: { name?: string }[] }; } catch { /* runtime error below */ }
       if (!tags.ok) return runtimeError("OLLAMA", `Ollama /api/tags returned HTTP ${tags.status}`, now() - started, data);
       model = data.models?.find((item) => item.name)?.name;
     }
@@ -208,7 +209,7 @@ export async function runLaya(fixture: Fixture): Promise<CommonResult> {
   }
   const inferenceStarted = now();
   try {
-    const module = await import(modulePath);
+    const module = await import(pathToFileURL(modulePath).href);
     const agent = await module.Agent.load(modelDir, { device: process.env.LAYA_DEVICE ?? "cpu" });
     const result = await agent.predict(fixture.state, {
       spatial_decision: {

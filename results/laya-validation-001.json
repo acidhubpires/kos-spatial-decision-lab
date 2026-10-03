@@ -1,0 +1,170 @@
+{
+  "validationId": "LAYA_VALIDATION_001",
+  "classification": "FUNCTIONAL VALIDATION — SINGLE RUN — NOT STATISTICALLY SIGNIFICANT",
+  "propositionId": "tower-vivo-sp",
+  "proposition": "The observed feature is a VIVO tower located in SP.",
+  "architecture": "LAYA",
+  "environment": {
+    "provider": "LAYA_TS_ONNX",
+    "model": "convaiinnovations/laya (general English checkpoint)",
+    "layaTsVersion": "0.1.0",
+    "layaTsModule": "D:\\AI\\sandbox\\running\\kos-spatial-decision-benchmark\\.runtime\\laya-ts\\dist\\index.js",
+    "modelDirectory": "D:\\AI\\sandbox\\running\\kos-spatial-decision-benchmark\\.runtime\\models\\laya",
+    "device": "cpu",
+    "nodeOnnxRuntime": "1.30.0",
+    "modelArtifactsVerified": [
+      "rl_agent_config.json",
+      "tokenizer.json",
+      "encoder.onnx",
+      "encoder.onnx.data",
+      "head.onnx",
+      "head.onnx.data"
+    ]
+  },
+  "runs": [
+    {
+      "fixtureId": "A",
+      "stateDigest": "f2eb88aaf448af926677d9f5fbb2d75a254698976560396928c38a13dc58d590",
+      "propositionId": "tower-vivo-sp",
+      "expectedDecision": "SUPPORTED",
+      "status": "COMPLETED",
+      "decision": "CONTRADICTED",
+      "correct": false,
+      "confidence": 0.0608,
+      "probabilities": {
+        "SUPPORTED": 0.205,
+        "CONTRADICTED": 0.4997,
+        "INSUFFICIENT": 0.2953
+      },
+      "totalLatencyMs": 5434.7883,
+      "inferenceLatencyMs": 5434.0165000000015,
+      "inputBytes": 402,
+      "outputBytes": 127,
+      "inputTokens": 190,
+      "outputTokens": 0,
+      "provider": "LAYA_TS_ONNX",
+      "model": "D:\\AI\\sandbox\\running\\kos-spatial-decision-benchmark\\.runtime\\models\\laya",
+      "raw": {
+        "model": "laya-rl-agent",
+        "answers": {
+          "spatial_decision": {
+            "type": "choice",
+            "choice": "CONTRADICTED",
+            "probabilities": {
+              "SUPPORTED": 0.205,
+              "CONTRADICTED": 0.4997,
+              "INSUFFICIENT": 0.2953
+            },
+            "confidence": 0.0608,
+            "answer_confidence": 0.4997,
+            "action": { "act_probability": 1 }
+          }
+        },
+        "usage": {
+          "input_tokens": 190,
+          "output_tokens": 0,
+          "state_tokens": 123,
+          "state_tokens_dropped": 0,
+          "truncated": false,
+          "truncated_questions": []
+        }
+      }
+    },
+    {
+      "fixtureId": "B",
+      "stateDigest": "fcea2962b3830decaafbedcb5c7eb3681316d6e3befa4016b4c528140e4938f9",
+      "propositionId": "tower-vivo-sp",
+      "expectedDecision": "CONTRADICTED",
+      "status": "COMPLETED",
+      "decision": "CONTRADICTED",
+      "correct": true,
+      "confidence": 0.0531,
+      "probabilities": {
+        "SUPPORTED": 0.203,
+        "CONTRADICTED": 0.4797,
+        "INSUFFICIENT": 0.3172
+      },
+      "totalLatencyMs": 4245.749299999996,
+      "inferenceLatencyMs": 4245.112399999998,
+      "inputBytes": 401,
+      "outputBytes": 127,
+      "inputTokens": 188,
+      "outputTokens": 0,
+      "provider": "LAYA_TS_ONNX",
+      "model": "D:\\AI\\sandbox\\running\\kos-spatial-decision-benchmark\\.runtime\\models\\laya",
+      "raw": {
+        "model": "laya-rl-agent",
+        "answers": {
+          "spatial_decision": {
+            "type": "choice",
+            "choice": "CONTRADICTED",
+            "probabilities": {
+              "SUPPORTED": 0.203,
+              "CONTRADICTED": 0.4797,
+              "INSUFFICIENT": 0.3172
+            },
+            "confidence": 0.0531,
+            "answer_confidence": 0.4797,
+            "action": { "act_probability": 1 }
+          }
+        },
+        "usage": {
+          "input_tokens": 188,
+          "output_tokens": 0,
+          "state_tokens": 121,
+          "state_tokens_dropped": 0,
+          "truncated": false,
+          "truncated_questions": []
+        }
+      }
+    },
+    {
+      "fixtureId": "C",
+      "stateDigest": "d6e1e74123ccf35480fefe7ee3c359e5b3da8989d94df28f2b54e2e671bc2583",
+      "propositionId": "tower-vivo-sp",
+      "expectedDecision": "INSUFFICIENT",
+      "status": "COMPLETED",
+      "decision": "CONTRADICTED",
+      "correct": false,
+      "confidence": 0.0747,
+      "probabilities": {
+        "SUPPORTED": 0.187,
+        "CONTRADICTED": 0.5141,
+        "INSUFFICIENT": 0.2989
+      },
+      "totalLatencyMs": 5161.793300000005,
+      "inferenceLatencyMs": 5161.331400000003,
+      "inputBytes": 384,
+      "outputBytes": 127,
+      "inputTokens": 182,
+      "outputTokens": 0,
+      "provider": "LAYA_TS_ONNX",
+      "model": "D:\\AI\\sandbox\\running\\kos-spatial-decision-benchmark\\.runtime\\models\\laya",
+      "raw": {
+        "model": "laya-rl-agent",
+        "answers": {
+          "spatial_decision": {
+            "type": "choice",
+            "choice": "CONTRADICTED",
+            "probabilities": {
+              "SUPPORTED": 0.187,
+              "CONTRADICTED": 0.5141,
+              "INSUFFICIENT": 0.2989
+            },
+            "confidence": 0.0747,
+            "answer_confidence": 0.5141,
+            "action": { "act_probability": 1 }
+          }
+        },
+        "usage": {
+          "input_tokens": 182,
+          "output_tokens": 0,
+          "state_tokens": 115,
+          "state_tokens_dropped": 0,
+          "truncated": false,
+          "truncated_questions": []
+        }
+      }
+    }
+  ]
+}

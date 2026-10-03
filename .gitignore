@@ -1,0 +1,6 @@
+.runtime/
+.env
+node_modules/
+dist/
+release/
+kos-spatial-decision-benchmark.zip

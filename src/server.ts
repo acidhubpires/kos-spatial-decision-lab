@@ -1,7 +1,8 @@
 import { createServer, type IncomingMessage, type ServerResponse } from "node:http";
 import { readFile } from "node:fs/promises";
 import { extname, join, resolve } from "node:path";
-import { fileURLToPath, pathToFileURL } from "node:url";
+import { fileURLToPath } from "node:url";
+import { pathToFileURL } from "node:url";
 import { digestCanonicalState, PROPOSITION, PROPOSITION_ID } from "./experiment-contract.js";
 import { FIXTURES } from "./fixtures.js";
 import { fixtureById, runKosGoverned, runLaya, runPureModel } from "./lab.js";
@@ -64,6 +65,7 @@ async function staticFile(pathname: string, res: ServerResponse): Promise<void> 
     res.end(content);
   } catch (error) {
     if ((error as NodeJS.ErrnoException).code === "ENOENT") {
+      // Missing assets must not be hidden by the document fallback.
       if (extension) {
         res.writeHead(404, { "content-type": "text/plain; charset=utf-8" });
         res.end("Not found");
@@ -80,13 +82,13 @@ async function staticFile(pathname: string, res: ServerResponse): Promise<void> 
 
 export function createLabServer() {
   return createServer(async (req, res) => {
-    try {
-      const url = new URL(req.url ?? "/", "http://" + (req.headers.host ?? "localhost"));
-      if (url.pathname.startsWith("/api/")) return await api(req, res, url.pathname);
-      return await staticFile(url.pathname, res);
-    } catch (error) {
-      send(res, 500, { error: error instanceof Error ? error.message : String(error) });
-    }
+  try {
+    const url = new URL(req.url ?? "/", "http://" + (req.headers.host ?? "localhost"));
+    if (url.pathname.startsWith("/api/")) return await api(req, res, url.pathname);
+    return await staticFile(url.pathname, res);
+  } catch (error) {
+    send(res, 500, { error: error instanceof Error ? error.message : String(error) });
+  }
   });
 }
 

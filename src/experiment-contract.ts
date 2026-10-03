@@ -44,6 +44,7 @@ function canonicalize(value: unknown): unknown {
   return value;
 }
 
+/** Stable JSON: object keys are sorted recursively; array order is preserved. */
 export function serializeCanonicalState(state: CanonicalSpatialState): string {
   return JSON.stringify(canonicalize(state));
 }

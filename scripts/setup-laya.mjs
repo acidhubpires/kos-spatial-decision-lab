@@ -1,13 +1,9 @@
-console.log(`
-Laya local setup is not automatic in v0.1.x.
+console.log(`Laya setup is intentionally explicit and does not modify the upstream repository.
 
-Required environment:
-  LAYA_MODEL_DIR=<exported ONNX model directory>
-  LAYA_TS_MODULE=<resolvable laya-ts module path or package>
+1. Export a local ONNX bundle using the upstream laya-ts instructions.
+2. Build laya-ts in the separate read-only checkout or use an existing installed laya-ts package.
+3. Set LAYA_MODEL_DIR to the exported bundle directory.
+4. Set LAYA_TS_MODULE to the absolute path of laya-ts/dist/index.js.
+5. Start the lab with pnpm dev.
 
-Reference upstream repository:
-  D:\\AI\\sandbox\\running\\laya
-
-Do not modify the upstream repository for this lab.
-If the required ONNX artifacts or module cannot be resolved, the UI will report NOT_CONFIGURED.
-`);
+Until both variables are set, the Laya panel reports NOT_CONFIGURED.`);

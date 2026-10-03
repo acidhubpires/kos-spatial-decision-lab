@@ -1,11 +1,12 @@
-import { digestCanonicalState, PROPOSITION_ID } from "./experiment-contract.js";
+import { digestCanonicalState, PROPOSITION, PROPOSITION_ID } from "./experiment-contract.js";
 import { FIXTURES } from "./fixtures.js";
 
-const manifest = FIXTURES.map(({ fixtureId, state, expectedLabel }) => ({
+export const EXPERIMENT_MANIFEST = FIXTURES.map(({ fixtureId, state, expectedLabel }) => ({
   fixtureId,
   propositionId: PROPOSITION_ID,
+  proposition: PROPOSITION,
   expectedLabel,
   stateDigest: digestCanonicalState(state),
 }));
 
-console.log(JSON.stringify(manifest, null, 2));
+console.log(JSON.stringify(EXPERIMENT_MANIFEST, null, 2));

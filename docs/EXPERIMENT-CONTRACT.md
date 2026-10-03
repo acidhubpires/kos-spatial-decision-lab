@@ -1,21 +1,30 @@
-# Experiment Contract
+# KOS Spatial Decision Benchmark — Experimental Contract
 
-## Frozen proposition
+Phase 2 freezes the shared input before any inference architecture is introduced.
 
-`tower-vivo-sp`
+## Proposition
 
-> The observed feature is a VIVO tower located in SP.
+- Proposition ID: `tower-vivo-sp`
+- Text: `The observed feature is a VIVO tower located in SP.`
+
+The proposition is separate from `CanonicalSpatialState` and is identical for all fixtures.
 
 ## Frozen fixtures
 
-- A: operator=VIVO, uf=SP → SUPPORTED
-- B: operator=TIM, uf=SP → CONTRADICTED
-- C: operator absent, uf=SP → INSUFFICIENT
+| Fixture | State facts | Expected label |
+|---|---|---|
+| A | `operator = VIVO`, `uf = SP` | `SUPPORTED` |
+| B | `operator = TIM`, `uf = SP` | `CONTRADICTED` |
+| C | operator absent, `uf = SP` | `INSUFFICIENT` |
 
-## Deterministic state digests
+Each state preserves only the Evidence-derived source and point-feature fields identified in `docs/RECONNAISSANCE.md`: provider/service/layer, point geometry type and spatial reference, feature identity, operator, UF, optional municipality, and point coordinates. It contains no KOS governance, evidence, tenant, project, confidence, or decision fields.
 
-- A: `f2eb88aaf448af926677d9f5fbb2d75a254698976560396928c38a13dc58d590`
-- B: `fcea2962b3830decaafbedcb5c7eb3681316d6e3befa4016b4c528140e4938f9`
-- C: `d6e1e74123ccf35480fefe7ee3c359e5b3da8989d94df28f2b54e2e671bc2583`
+## Contract and digest
 
-These inputs are frozen before architecture-specific inference is introduced.
+`src/experiment-contract.ts` defines the minimal TypeScript contract, recursively key-sorted canonical JSON serialization, and SHA-256 digest. Arrays retain order and absent optional fields remain absent. The state digest is calculated over the canonical state only; it does not include the proposition or expected label.
+
+`fixtures/manifest.json` records the proposition, expected label, and frozen digest for each fixture. The manifest is generated/verified from the typed fixtures by `src/manifest.ts`.
+
+## Scope boundary
+
+This phase contains no Laya, LLM, Ollama, Bedrock, KOS pipeline, ArcGIS call, AWS integration, benchmark loop, latency measurement, or inference code. The next phase may add architecture adapters that consume these exact frozen states and the separate proposition.
